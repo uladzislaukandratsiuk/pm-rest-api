@@ -1,6 +1,31 @@
 # Compiled class file
 *.class
 
+*.bak
+
+/target
+*.iml
+
+## Directory-based site format:
+.idea/
+
+## File-based site format:
+*.ipr
+*.iws
+
+## Plugin-specific files:
+
+# IntelligIdea files
+.idea
+out
+target
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
 # Log file
 *.log
 
@@ -21,3 +46,4 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/.idea/
