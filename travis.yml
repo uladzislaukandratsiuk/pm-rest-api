@@ -2,5 +2,5 @@ language: java
 jdk:
   - oraclejdk11
   - openjdk11
-after_success:
+script:
   - mvn clean test
