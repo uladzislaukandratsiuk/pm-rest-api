@@ -9,7 +9,7 @@ public interface DaoRepository<T, ID> {
 
     Optional<T> findById(ID id);
 
-    <S extends T> S save(S entity);
+    void save(T entity);
 
     void deleteById(ID id);
 }

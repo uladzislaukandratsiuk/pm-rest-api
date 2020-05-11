@@ -15,17 +15,17 @@ public class ActivityDaoImpl implements DaoRepository<Activity, Long> {
     }
 
     @Override
-    public Optional<Activity> findById(Long aLong) {
+    public Optional<Activity> findById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends Activity> S save(S entity) {
-        return null;
+    public void save(Activity entity) {
+
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(Long id) {
 
     }
 }
