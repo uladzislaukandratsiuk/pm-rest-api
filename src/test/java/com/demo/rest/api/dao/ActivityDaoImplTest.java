@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -37,7 +36,6 @@ class ActivityDaoImplTest {
         activityQuery = mock(Query.class);
     }
 
-    @Disabled("method findAll() not implemented")
     @Test
     void whenInvokeFindAll_shouldReturnListOfActivities() {
         List<Activity> activities = new ArrayList<>();
@@ -47,7 +45,6 @@ class ActivityDaoImplTest {
         when(activityDao.findAll()).thenReturn(activities);
     }
 
-    @Disabled("method findById() not implemented")
     @Test
     void whenInvokeFindByID_shouldReturnActivity() {
         Activity activity = new Activity();
@@ -57,25 +54,27 @@ class ActivityDaoImplTest {
         when(activityDao.findById(id)).thenReturn(Optional.of(activity));
     }
 
-    @Disabled("method save() not implemented")
     @Test
-    void whenInvokeSave_shouldReturnActivity() {
+    void whenInvokeSave_shouldDoNothing() {
         Activity activity = new Activity();
+        ActivityDaoImpl spyDao = spy(activityDao);
         when(sessionFactory.getCurrentSession()).thenReturn(session);
         Assertions.assertNotNull(activity);
-        doThrow(new RuntimeException()).when(session).saveOrUpdate(activity);
-        doThrow(new RuntimeException()).when(activityDao).save(activity);
+        doNothing().when(session).saveOrUpdate(activity);
+        spyDao.save(activity);
+        verify(spyDao, times(1)).save(activity);
     }
 
-    @Disabled("method deleteById() not implemented")
     @Test
-    void deleteById() {
+    void whenDeleteById_shouldRemoveActivity() {
         Long id = 1L;
+        ActivityDaoImpl spyDao = spy(activityDao);
         when(sessionFactory.getCurrentSession()).thenReturn(session);
         when(session.createQuery("delete from Activity where id=:activityId", Activity.class))
                 .thenReturn(activityQuery);
-        doNothing().when(activityQuery.setParameter("activityId", id));
-        doNothing().when(activityQuery.executeUpdate());
-        doThrow(new RuntimeException()).when(activityDao).deleteById(id);
+        when(activityQuery.setParameter("activityId", id)).thenReturn(activityQuery);
+        when(activityQuery.executeUpdate()).thenReturn(1);
+        spyDao.deleteById(id);
+        verify(spyDao, times(1)).deleteById(id);
     }
 }

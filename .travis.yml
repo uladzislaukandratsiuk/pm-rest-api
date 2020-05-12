@@ -3,3 +3,5 @@ jdk:
   - openjdk11
 script:
   - mvn clean test
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report
