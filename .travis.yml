@@ -1,11 +1,5 @@
 language: java
 jdk:
   - openjdk11
-addons:
-  sonarcloud:
-    organization: "vladkondratuk"
-    token:
-      secure: "f6741c01dbde728d925c340172cc4e9616800da4"
-
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=vladkondratuk_rest-api
+  - mvn clean test

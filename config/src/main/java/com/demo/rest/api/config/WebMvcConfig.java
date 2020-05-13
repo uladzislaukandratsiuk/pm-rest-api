@@ -29,8 +29,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     private static final Logger log = LoggerFactory.getLogger(WebMvcConfig.class);
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
+
+    public WebMvcConfig(Environment env) {
+        this.env = env;
+    }
 
     public DataSource dataSource() {
 

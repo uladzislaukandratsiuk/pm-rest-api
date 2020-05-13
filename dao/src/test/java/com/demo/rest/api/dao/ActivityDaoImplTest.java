@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ class ActivityDaoImplTest {
     @Test
     void whenInvokeSave_shouldDoNothing() {
         Activity activity = new Activity();
-        ActivityDaoImpl spyDao = spy(activityDao);
+        ActivityDaoImpl spyDao = Mockito.spy(activityDao);
         when(sessionFactory.getCurrentSession()).thenReturn(session);
         Assertions.assertNotNull(activity);
         doNothing().when(session).saveOrUpdate(activity);
@@ -68,7 +69,7 @@ class ActivityDaoImplTest {
     @Test
     void whenDeleteById_shouldRemoveActivity() {
         Long id = 1L;
-        ActivityDaoImpl spyDao = spy(activityDao);
+        ActivityDaoImpl spyDao = Mockito.spy(activityDao);
         when(sessionFactory.getCurrentSession()).thenReturn(session);
         when(session.createQuery("delete from Activity where id=:activityId", Activity.class))
                 .thenReturn(activityQuery);

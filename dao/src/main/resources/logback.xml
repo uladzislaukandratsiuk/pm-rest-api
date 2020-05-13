@@ -5,7 +5,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.demo.rest.api" level="DEBUG"/>
+    <logger name="com.demo.rest.api.dao" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
