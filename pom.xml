@@ -18,11 +18,6 @@
     <packaging>pom</packaging>
 
     <properties>
-        <jacoco.version>0.8.3</jacoco.version>
-        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.xml</sonar.jacoco.reportPath>
-        <sonar.language>java</sonar.language>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -117,41 +112,6 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.6.0.1398</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>${jacoco.version}</version>
-                    <configuration>
-                        <destFile>${basedir}/target/coverage-reports/jacoco-unit.xml</destFile>
-                        <dataFile>${basedir}/target/coverage-reports/jacoco-unit.xml</dataFile>
-                        <output>file</output>
-                        <append>true</append>
-                        <excludes>
-                            <exclude>*MethodAccess</exclude>
-                        </excludes>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>jacoco-initialize</id>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                            <phase>test-compile</phase>
-                        </execution>
-                        <execution>
-                            <id>test-site</id>
-                            <phase>post-integration-test</phase>
-                            <goals>
-                                <goal>report-aggregate</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
