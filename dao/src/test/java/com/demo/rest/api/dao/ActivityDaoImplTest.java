@@ -4,17 +4,17 @@ import com.demo.rest.api.entity.Activity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -23,34 +23,34 @@ class ActivityDaoImplTest {
     @Mock
     private SessionFactory sessionFactory;
 
-    @InjectMocks
-    private ActivityDaoImpl activityDao;
-
+    @Mock
     private Session session;
 
+    @Mock
     private Query<Activity> activityQuery;
+
+    @InjectMocks
+    private ActivityDaoImpl activityDao;
 
     @BeforeEach
     public void setup() {
         initMocks(this);
-        session = mock(Session.class);
-        activityQuery = mock(Query.class);
+        when(sessionFactory.getCurrentSession()).thenReturn(session);
     }
 
     @Test
     void whenInvokeFindAll_shouldReturnListOfActivities() {
         List<Activity> activities = new ArrayList<>();
-        when(sessionFactory.getCurrentSession()).thenReturn(session);
         when(session.createQuery("from Activity", Activity.class)).thenReturn(activityQuery);
         when(activityQuery.getResultList()).thenReturn(activities);
         when(activityDao.findAll()).thenReturn(activities);
+        assertEquals(activityDao.findAll(), activities);
     }
 
     @Test
     void whenInvokeFindByID_shouldReturnActivity() {
         Activity activity = new Activity();
         Long id = 1L;
-        when(sessionFactory.getCurrentSession()).thenReturn(session);
         when(session.get(Activity.class, id)).thenReturn(activity);
         when(activityDao.findById(id)).thenReturn(Optional.of(activity));
     }
@@ -58,9 +58,8 @@ class ActivityDaoImplTest {
     @Test
     void whenInvokeSave_shouldDoNothing() {
         Activity activity = new Activity();
-        ActivityDaoImpl spyDao = Mockito.spy(activityDao);
-        when(sessionFactory.getCurrentSession()).thenReturn(session);
-        Assertions.assertNotNull(activity);
+        ActivityDaoImpl spyDao = spy(activityDao);
+        assertNotNull(activity);
         doNothing().when(session).saveOrUpdate(activity);
         spyDao.save(activity);
         verify(spyDao, times(1)).save(activity);
@@ -69,8 +68,7 @@ class ActivityDaoImplTest {
     @Test
     void whenDeleteById_shouldRemoveActivity() {
         Long id = 1L;
-        ActivityDaoImpl spyDao = Mockito.spy(activityDao);
-        when(sessionFactory.getCurrentSession()).thenReturn(session);
+        ActivityDaoImpl spyDao = spy(activityDao);
         when(session.createQuery("delete from Activity where id=:activityId", Activity.class))
                 .thenReturn(activityQuery);
         when(activityQuery.setParameter("activityId", id)).thenReturn(activityQuery);
