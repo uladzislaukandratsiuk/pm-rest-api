@@ -19,6 +19,11 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 class ActivityDaoImplTest {
 
+    private static final int ONCE = 1;
+    private static final long ACTIVITY_ID = 1L;
+    private static final Activity ACTIVITY = new Activity();
+    private static final List<Activity> ACTIVITIES = new ArrayList<>();
+
     @Mock
     private SessionFactory sessionFactory;
 
@@ -39,39 +44,34 @@ class ActivityDaoImplTest {
 
     @Test
     void shouldReturnListOfActivities() {
-        List<Activity> activities = new ArrayList<>();
         when(session.createQuery("from Activity", Activity.class)).thenReturn(activityQuery);
-        when(activityQuery.getResultList()).thenReturn(activities);
-        when(activityDao.findAll()).thenReturn(activities);
-        assertEquals(activityDao.findAll(), activities);
+        when(activityQuery.getResultList()).thenReturn(ACTIVITIES);
+        when(activityDao.findAll()).thenReturn(ACTIVITIES);
+        assertEquals(activityDao.findAll(), ACTIVITIES);
     }
 
     @Test
     void shouldReturnActivityById() {
-        Activity activity = new Activity();
-        Long id = 1L;
-        when(session.get(Activity.class, id)).thenReturn(activity);
-        when(activityDao.findById(id)).thenReturn(Optional.of(activity));
+        when(session.get(Activity.class, ACTIVITY_ID)).thenReturn(ACTIVITY);
+        when(activityDao.findById(ACTIVITY_ID)).thenReturn(Optional.of(ACTIVITY));
     }
 
     @Test
     void shouldSaveActivity() {
-        Activity activity = new Activity();
         ActivityDaoImpl spyDao = spy(activityDao);
-        doNothing().when(session).saveOrUpdate(activity);
-        spyDao.save(activity);
-        verify(spyDao, times(1)).save(activity);
+        doNothing().when(session).saveOrUpdate(ACTIVITY);
+        spyDao.save(ACTIVITY);
+        verify(spyDao, times(ONCE)).save(ACTIVITY);
     }
 
     @Test
     void shouldRemoveActivityById() {
-        Long id = 1L;
         ActivityDaoImpl spyDao = spy(activityDao);
         when(session.createQuery("delete from Activity where id=:activityId", Activity.class))
                 .thenReturn(activityQuery);
-        when(activityQuery.setParameter("activityId", id)).thenReturn(activityQuery);
-        when(activityQuery.executeUpdate()).thenReturn(1);
-        spyDao.deleteById(id);
-        verify(spyDao, times(1)).deleteById(id);
+        when(activityQuery.setParameter("activityId", ACTIVITY_ID)).thenReturn(activityQuery);
+        when(activityQuery.executeUpdate()).thenReturn(ONCE);
+        spyDao.deleteById(ACTIVITY_ID);
+        verify(spyDao, times(ONCE)).deleteById(ACTIVITY_ID);
     }
 }
