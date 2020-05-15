@@ -3,7 +3,6 @@ package com.demo.rest.api.service;
 import com.demo.rest.api.dao.ActivityDao;
 import com.demo.rest.api.entity.Activity;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -33,31 +32,31 @@ class ActivityServiceImplTest {
         initMocks(this);
     }
 
-    @Disabled("method not implemented")
     @Test
     public void shouldReturnActivities() {
-        when(activityService.getActivities()).thenReturn(ACTIVITIES);
+        when(activityDao.findAll()).thenReturn(ACTIVITIES);
+        activityService.getActivities();
         verify(activityDao, times(ONCE)).findAll();
     }
 
-    @Disabled("method not implemented")
     @Test
     public void shouldReturnActivity() {
-        when(activityService.getActivity(ACTIVITY_ID)).thenReturn(Optional.of((ACTIVITY)));
+        when(activityDao.findById(ACTIVITY_ID)).thenReturn(Optional.of((ACTIVITY)));
+        activityService.getActivity(ACTIVITY_ID);
         verify(activityDao, times(ONCE)).findById(ACTIVITY_ID);
     }
 
-    @Disabled("method not implemented")
     @Test
     public void shouldSaveActivity() {
-        doNothing().when(spy(activityService)).saveActivity(ACTIVITY);
+        doNothing().when(activityDao).save(ACTIVITY);
+        activityService.saveActivity(ACTIVITY);
         verify(activityDao, times(ONCE)).save(ACTIVITY);
     }
 
-    @Disabled("method not implemented")
     @Test
     public void shouldDeleteActivity() {
-        doNothing().when(spy(activityService)).deleteActivity(ACTIVITY_ID);
+        doNothing().when(activityDao).deleteById(ACTIVITY_ID);
+        activityService.deleteActivity(ACTIVITY_ID);
         verify(activityDao, times(ONCE)).deleteById(ACTIVITY_ID);
     }
 }
