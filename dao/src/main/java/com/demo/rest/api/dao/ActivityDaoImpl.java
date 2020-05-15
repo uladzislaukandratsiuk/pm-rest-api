@@ -29,19 +29,20 @@ public class ActivityDaoImpl implements DaoRepository<Activity, Long> {
     public Optional<Activity> findById(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Activity activity = session.get(Activity.class, id);
-        return Optional.of(activity);
+        return Optional.ofNullable(activity);
     }
 
     @Override
     public void save(Activity activity) {
         Session session = sessionFactory.getCurrentSession();
-        if (activity != null) session.saveOrUpdate(activity);
+        session.saveOrUpdate(activity);
     }
 
     @Override
     public void deleteById(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Activity> query = session.createQuery("delete from Activity where id=:activityId", Activity.class);
+        Query<Activity> query = session
+                .createQuery("delete from Activity where id=:activityId", Activity.class);
         query.setParameter("activityId", id);
         query.executeUpdate();
     }

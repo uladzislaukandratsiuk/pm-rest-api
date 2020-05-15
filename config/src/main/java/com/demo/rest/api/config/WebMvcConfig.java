@@ -37,27 +37,27 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     public DataSource dataSource() {
 
-        ComboPooledDataSource crmDataSource = new ComboPooledDataSource();
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
 
         try {
-            crmDataSource.setDriverClass(env.getProperty("jdbc.driver"));
+            dataSource.setDriverClass(env.getProperty("jdbc.driver"));
         } catch (PropertyVetoException exc) {
             throw new RuntimeException(exc);
         }
 
-        log.info("jdbc.url=" + env.getProperty("jdbc.url"));
-        log.info("jdbc.user=" + env.getProperty("jdbc.user"));
+        log.info("jdbc.url={}", env.getProperty("jdbc.url"));
+        log.info("jdbc.user={}", env.getProperty("jdbc.user"));
 
-        crmDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
-        crmDataSource.setUser(env.getProperty("jdbc.user"));
-        crmDataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+        dataSource.setUser(env.getProperty("jdbc.user"));
+        dataSource.setPassword(env.getProperty("jdbc.password"));
 
-        crmDataSource.setInitialPoolSize(getIntProperty("connection.pool.initialPoolSize"));
-        crmDataSource.setMaxPoolSize(getIntProperty("connection.pool.maxPoolSize"));
-        crmDataSource.setMinPoolSize(getIntProperty("connection.pool.minPoolSize"));
-        crmDataSource.setMaxIdleTime(getIntProperty("connection.pool.maxIdleTime"));
+        dataSource.setInitialPoolSize(getIntProperty("connection.pool.initialPoolSize"));
+        dataSource.setMaxPoolSize(getIntProperty("connection.pool.maxPoolSize"));
+        dataSource.setMinPoolSize(getIntProperty("connection.pool.minPoolSize"));
+        dataSource.setMaxIdleTime(getIntProperty("connection.pool.maxIdleTime"));
 
-        return crmDataSource;
+        return dataSource;
     }
 
     private int getIntProperty(String propName) {

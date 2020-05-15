@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -39,7 +38,7 @@ class ActivityDaoImplTest {
     }
 
     @Test
-    void whenInvokeFindAll_shouldReturnListOfActivities() {
+    void shouldReturnListOfActivities() {
         List<Activity> activities = new ArrayList<>();
         when(session.createQuery("from Activity", Activity.class)).thenReturn(activityQuery);
         when(activityQuery.getResultList()).thenReturn(activities);
@@ -48,7 +47,7 @@ class ActivityDaoImplTest {
     }
 
     @Test
-    void whenInvokeFindByID_shouldReturnActivity() {
+    void shouldReturnActivityById() {
         Activity activity = new Activity();
         Long id = 1L;
         when(session.get(Activity.class, id)).thenReturn(activity);
@@ -56,17 +55,16 @@ class ActivityDaoImplTest {
     }
 
     @Test
-    void whenInvokeSave_shouldDoNothing() {
+    void shouldSaveActivity() {
         Activity activity = new Activity();
         ActivityDaoImpl spyDao = spy(activityDao);
-        assertNotNull(activity);
         doNothing().when(session).saveOrUpdate(activity);
         spyDao.save(activity);
         verify(spyDao, times(1)).save(activity);
     }
 
     @Test
-    void whenDeleteById_shouldRemoveActivity() {
+    void shouldRemoveActivityById() {
         Long id = 1L;
         ActivityDaoImpl spyDao = spy(activityDao);
         when(session.createQuery("delete from Activity where id=:activityId", Activity.class))
