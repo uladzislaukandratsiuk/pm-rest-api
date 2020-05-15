@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ActivityDaoImpl implements DaoRepository<Activity, Long> {
+public class ActivityDaoImpl implements ActivityDao {
 
     private final SessionFactory sessionFactory;
 
