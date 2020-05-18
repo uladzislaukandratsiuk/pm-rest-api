@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -35,6 +36,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         this.env = env;
     }
 
+    @Bean
     public DataSource dataSource() {
 
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
@@ -71,6 +73,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return props;
     }
 
+    @Bean
     public LocalSessionFactoryBean sessionFactory() {
 
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -82,6 +85,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return sessionFactory;
     }
 
+    @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();

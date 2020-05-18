@@ -1,5 +1,7 @@
 package com.demo.rest.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "activity_name")
@@ -18,15 +21,18 @@ public class Activity {
     private String status;
 
     @Column(name = "start_date")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape= JsonFormat.Shape.STRING,
+            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date startDate;
 
     @Column(name = "planned_end_date")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape= JsonFormat.Shape.STRING,
+            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date plannedEndDate;
 
     @Column(name = "actual_end_date")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape= JsonFormat.Shape.STRING,
+            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date actualEndDate;
 
     @Column(name = "comment")
