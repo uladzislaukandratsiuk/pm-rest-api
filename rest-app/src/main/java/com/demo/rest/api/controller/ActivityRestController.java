@@ -1,4 +1,4 @@
-package com.demo.rest.api;
+package com.demo.rest.api.controller;
 
 import com.demo.rest.api.entity.Activity;
 import com.demo.rest.api.service.ActivityService;
