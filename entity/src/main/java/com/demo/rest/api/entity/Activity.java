@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "activity")
@@ -105,6 +106,24 @@ public class Activity {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Activity)) return false;
+
+        Activity activity = (Activity) o;
+
+        if (!Objects.equals(id, activity.id)) return false;
+        return Objects.equals(activityName, activity.activityName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (activityName != null ? activityName.hashCode() : 0);
+        return result;
     }
 
     @Override
