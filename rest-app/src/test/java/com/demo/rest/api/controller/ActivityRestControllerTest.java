@@ -19,9 +19,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -60,11 +60,20 @@ class ActivityRestControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_VALUE));
 
         verify(activityService, Mockito.times(ONCE)).getActivities();
+        verifyNoMoreInteractions(activityService);
     }
 
-    @Disabled
     @Test
-    void getActivity() {
+    void getActivity() throws Exception {
+        when(activityService.getActivity(ACTIVITY_ID)).thenReturn(Optional.of(ACTIVITY));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/activities/" + ACTIVITY_ID)
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_VALUE));
+
+        verify(activityService, times(ONCE)).getActivity(ACTIVITY_ID);
+        verifyNoMoreInteractions(activityService);
     }
 
     @Disabled

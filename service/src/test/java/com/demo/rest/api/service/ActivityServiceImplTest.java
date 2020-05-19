@@ -41,7 +41,7 @@ class ActivityServiceImplTest {
 
     @Test
     public void shouldReturnActivity() {
-        when(activityDao.findById(ACTIVITY_ID)).thenReturn(Optional.of((ACTIVITY)));
+        when(activityDao.findById(ACTIVITY_ID)).thenReturn(Optional.of(ACTIVITY));
         activityService.getActivity(ACTIVITY_ID);
         verify(activityDao, times(ONCE)).findById(ACTIVITY_ID);
     }
