@@ -2,11 +2,9 @@ package com.demo.rest.api.controller;
 
 import com.demo.rest.api.entity.Activity;
 import com.demo.rest.api.service.ActivityService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -120,9 +118,19 @@ class ActivityRestControllerTest {
         verifyNoMoreInteractions(activityService);
     }
 
-    @Disabled
     @Test
-    void deleteActivity() {
+    void shouldDeleteActivity() throws Exception {
+        doNothing().when(activityService).deleteActivity(ACTIVITY_ID);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/activities/" + ACTIVITY_ID)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(objectMapper.writeValueAsString(ACTIVITY))
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+
+        verify(activityService, times(ONCE)).deleteActivity(ACTIVITY_ID);
+        verifyNoMoreInteractions(activityService);
     }
 
     private static void initActivityObject() {
