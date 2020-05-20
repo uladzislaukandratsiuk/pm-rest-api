@@ -2,6 +2,7 @@ package com.demo.rest.api.service;
 
 import com.demo.rest.api.dao.ActivityDao;
 import com.demo.rest.api.entity.Activity;
+import com.demo.rest.api.exception.ActivityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,7 +21,11 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     @Transactional
     public List<Activity> getActivities() {
-        return activityDao.findAll();
+        List<Activity> activities = activityDao.findAll();
+        if (activities == null || activities.isEmpty()) {
+            throw new ActivityNotFoundException("No Activities data found!");
+        }
+        return activities;
     }
 
     @Override
