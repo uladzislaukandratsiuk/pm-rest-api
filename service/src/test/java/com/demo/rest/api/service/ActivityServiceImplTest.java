@@ -74,8 +74,19 @@ class ActivityServiceImplTest {
     @Test
     public void shouldReturnActivity() {
         when(activityDao.findById(TEST_ACTIVITY_ID)).thenReturn(Optional.of(TEST_ACTIVITY));
-        activityService.getActivity(TEST_ACTIVITY_ID);
+        Optional<Activity> activity = activityService.getActivity(TEST_ACTIVITY_ID);
+        assertNotNull(activity);
         verify(activityDao, times(ONCE)).findById(TEST_ACTIVITY_ID);
+    }
+
+    @Test
+    public void activityIsEmpty_shouldThrowActivityNotFoundException() {
+        when(activityDao.findById(TEST_ACTIVITY_ID))
+                .thenReturn(Optional.empty())
+                .thenThrow(ActivityNotFoundException.class);
+
+        assertThrows(ActivityNotFoundException.class,
+                () -> activityService.getActivity(TEST_ACTIVITY_ID));
     }
 
     @Test

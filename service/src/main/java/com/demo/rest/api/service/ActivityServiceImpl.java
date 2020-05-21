@@ -22,16 +22,18 @@ public class ActivityServiceImpl implements ActivityService {
     @Transactional
     public List<Activity> getActivities() {
         List<Activity> activities = activityDao.findAll();
-        if (activities == null || activities.isEmpty()) {
+        if (activities == null || activities.isEmpty())
             throw new ActivityNotFoundException("No Activities data found!");
-        }
         return activities;
     }
 
     @Override
     @Transactional
     public Optional<Activity> getActivity(Long id) {
-        return activityDao.findById(id);
+        Optional<Activity> activity = activityDao.findById(id);
+        if (activity.isEmpty())
+            throw new ActivityNotFoundException("Activity with id=" + id + " not found!");
+        return activity;
     }
 
     @Override
