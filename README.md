@@ -3,7 +3,7 @@
 
 Java project to study technologies such as REST, Spring Framework(MVC), Hibernate ORM, Junit5, Mockito, MockMvc, CI/CD and others.
 
-###Project Idea 
+### Project Idea 
 A simple project to do in one month(I think) and gain experience for large projects. Rest-api for "Project management tool" demo project. 
 I have idea to made my own "Project management tool" to learn new technologies and track time I spent on solve tasks.
 P.S.For now is just rest-app on 3 entities. 
