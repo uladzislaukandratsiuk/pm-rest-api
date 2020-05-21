@@ -33,6 +33,9 @@ class ActivityDaoImplTest {
     @Mock
     private Query<Activity> activityQuery;
 
+    @Mock
+    private Query query;
+
     @InjectMocks
     private ActivityDaoImpl activityDao;
 
@@ -67,10 +70,9 @@ class ActivityDaoImplTest {
     @Test
     void shouldRemoveActivityById() {
         ActivityDaoImpl spyDao = spy(activityDao);
-        when(session.createQuery("delete from Activity where id=:activityId", Activity.class))
-                .thenReturn(activityQuery);
-        when(activityQuery.setParameter("activityId", ACTIVITY_ID)).thenReturn(activityQuery);
-        when(activityQuery.executeUpdate()).thenReturn(ONCE);
+        when(session.createQuery("delete from Activity where id=:activityId")).thenReturn(query);
+        when(query.setParameter("activityId", ACTIVITY_ID)).thenReturn(query);
+        when(query.executeUpdate()).thenReturn(ONCE);
         spyDao.deleteById(ACTIVITY_ID);
         verify(spyDao, times(ONCE)).deleteById(ACTIVITY_ID);
     }

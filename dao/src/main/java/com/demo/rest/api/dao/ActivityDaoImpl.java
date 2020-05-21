@@ -41,8 +41,7 @@ public class ActivityDaoImpl implements ActivityDao {
     @Override
     public void deleteById(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Activity> query = session
-                .createQuery("delete from Activity where id=:activityId", Activity.class);
+        Query query = session.createQuery("delete from Activity where id=:activityId");
         query.setParameter("activityId", id);
         query.executeUpdate();
     }
