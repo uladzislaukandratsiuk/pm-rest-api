@@ -45,6 +45,9 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     @Transactional
     public void deleteActivity(Long id) {
+        Optional<Activity> activity = activityDao.findById(id);
+        if (activity.isEmpty())
+            throw new ActivityNotFoundException("Activity with id=" + id + " not found!");
         activityDao.deleteById(id);
     }
 }

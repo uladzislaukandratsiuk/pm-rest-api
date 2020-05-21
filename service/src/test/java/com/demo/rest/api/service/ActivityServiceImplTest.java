@@ -80,7 +80,7 @@ class ActivityServiceImplTest {
     }
 
     @Test
-    public void activityIsEmpty_shouldThrowActivityNotFoundException() {
+    public void activityIsEmpty_shouldThrowActivityNotFoundException_forGetActivity() {
         when(activityDao.findById(TEST_ACTIVITY_ID))
                 .thenReturn(Optional.empty())
                 .thenThrow(ActivityNotFoundException.class);
@@ -98,8 +98,19 @@ class ActivityServiceImplTest {
 
     @Test
     public void shouldDeleteActivity() {
+        shouldReturnActivity();
         doNothing().when(activityDao).deleteById(TEST_ACTIVITY_ID);
         activityService.deleteActivity(TEST_ACTIVITY_ID);
         verify(activityDao, times(ONCE)).deleteById(TEST_ACTIVITY_ID);
+    }
+
+    @Test
+    public void activityIsEmpty_shouldThrowActivityNotFoundException_forDeleteActivity() {
+        when(activityDao.findById(TEST_ACTIVITY_ID))
+                .thenReturn(Optional.empty())
+                .thenThrow(ActivityNotFoundException.class);
+
+        assertThrows(ActivityNotFoundException.class,
+                () -> activityService.deleteActivity(TEST_ACTIVITY_ID));
     }
 }
