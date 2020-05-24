@@ -139,7 +139,7 @@ class ActivityRestControllerTest {
         ACTIVITY.setStatus("in progress");
         ACTIVITY.setStartDate(Date.valueOf("2020-05-17"));
         ACTIVITY.setPlannedEndDate(Date.valueOf("2020-05-17"));
-        ACTIVITY.setActualEndDate(Date.valueOf("2020-05-18"));
+        ACTIVITY.setLastUpdateDate(Date.valueOf("2020-05-18"));
         ACTIVITY.setComment("MockMvc test");
     }
 
@@ -149,7 +149,7 @@ class ActivityRestControllerTest {
         UPDATED_ACTIVITY.setStatus("completed");
         UPDATED_ACTIVITY.setStartDate(Date.valueOf("2020-05-17"));
         UPDATED_ACTIVITY.setPlannedEndDate(Date.valueOf("2020-05-17"));
-        UPDATED_ACTIVITY.setActualEndDate(Date.valueOf("2020-05-18"));
+        UPDATED_ACTIVITY.setLastUpdateDate(Date.valueOf("2020-05-18"));
         UPDATED_ACTIVITY.setComment("MockMvc test");
     }
 }

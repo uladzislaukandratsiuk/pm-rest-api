@@ -31,10 +31,10 @@ public class Activity {
             pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date plannedEndDate;
 
-    @Column(name = "actual_end_date")
+    @Column(name = "last_update_date")
     @JsonFormat(shape= JsonFormat.Shape.STRING,
             pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
-    private Date actualEndDate;
+    private Date lastUpdateDate;
 
     @Column(name = "comment")
     private String comment;
@@ -43,12 +43,12 @@ public class Activity {
     }
 
     public Activity(String activityName, String status, Date startDate,
-                    Date plannedEndDate, Date actualEndDate, String comment) {
+                    Date plannedEndDate, Date lastUpdateDate, String comment) {
         this.activityName = activityName;
         this.status = status;
         this.startDate = startDate;
         this.plannedEndDate = plannedEndDate;
-        this.actualEndDate = actualEndDate;
+        this.lastUpdateDate = lastUpdateDate;
         this.comment = comment;
     }
 
@@ -92,12 +92,12 @@ public class Activity {
         this.plannedEndDate = plannedEndDate;
     }
 
-    public Date getActualEndDate() {
-        return actualEndDate;
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
     }
 
-    public void setActualEndDate(Date actualEndDate) {
-        this.actualEndDate = actualEndDate;
+    public void setLastUpdateDate(Date lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
     }
 
     public String getComment() {
@@ -134,7 +134,7 @@ public class Activity {
                 ", status='" + status + '\'' +
                 ", startDate=" + startDate +
                 ", plannedEndDate=" + plannedEndDate +
-                ", actualEndDate=" + actualEndDate +
+                ", lastUpdateDate=" + lastUpdateDate +
                 ", comment='" + comment + '\'' +
                 '}';
     }
