@@ -12,10 +12,10 @@ DROP TABLE IF EXISTS `activity`;
 CREATE TABLE `activity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `activity_name` varchar(128) NOT NULL,
-  `status` varchar(45) NOT NULL,
+  `status` enum('Active','Pending','Cancelled','Suspend') NOT NULL,
   `start_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `planned_end_date` datetime NOT NULL,
-  `actual_end_date` datetime DEFAULT NULL,
+  `actual_end_date` datetime NULL ON UPDATE CURRENT_TIMESTAMP,
   `comment` varchar(256) DEFAULT NULL,
   `task_id` int(11) DEFAULT NULL,
 
@@ -36,11 +36,11 @@ DROP TABLE IF EXISTS `task`;
 CREATE TABLE `task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `task_name` varchar(128) NOT NULL,
-  `priority` varchar(45) NOT NULL,
-  `status` varchar(45) NOT NULL,
+  `priority` enum('High','Medium','Low') NOT NULL,
+  `status` enum('Active','Pending','Cancelled','Suspend') NOT NULL,
   `start_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `planned_end_date` datetime NOT NULL,
-  `actual_end_date` datetime DEFAULT NULL,
+  `actual_end_date` datetime NULL ON UPDATE CURRENT_TIMESTAMP,
   `comment` varchar(256) DEFAULT NULL,
   `project_id` int(11) DEFAULT NULL,
 
@@ -61,10 +61,10 @@ DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `project_name` varchar(128) NOT NULL,
-  `status` varchar(45) NOT NULL,
+  `status` enum('Active','Pending','Cancelled','Suspend') NOT NULL,
   `start_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `planned_end_date` datetime NOT NULL,
-  `actual_end_date` datetime DEFAULT NULL,
+  `actual_end_date` datetime NULL ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(256) DEFAULT NULL,
 
   PRIMARY KEY (`id`)
