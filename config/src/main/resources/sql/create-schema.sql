@@ -21,6 +21,8 @@ CREATE TABLE `activity` (
 
   PRIMARY KEY (`id`),
 
+   UNIQUE KEY (`activity_name`),
+
   KEY `FK_TASK_ID_idx` (`task_id`),
 
   CONSTRAINT `FK_TASK`
@@ -61,6 +63,8 @@ CREATE TABLE `task` (
 
   PRIMARY KEY (`id`),
 
+  UNIQUE KEY (`task_name`),
+
   KEY `FK_PROJECT_ID_idx` (`project_id`),
 
   CONSTRAINT `FK_PROJECT`
@@ -92,7 +96,9 @@ CREATE TABLE `project` (
   `last_update_date` datetime NULL ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(256) DEFAULT 'No description',
 
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+
+  UNIQUE KEY (`project_name`)
 
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
