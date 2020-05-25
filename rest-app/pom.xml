@@ -15,13 +15,19 @@
     <dependencies>
         <dependency>
             <groupId>com.demo.rest.api</groupId>
+            <artifactId>config</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.rest.api</groupId>
             <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.demo.rest.api</groupId>
-            <artifactId>config</artifactId>
+            <artifactId>exception</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

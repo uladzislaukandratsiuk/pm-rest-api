@@ -13,7 +13,13 @@
     <dependencies>
         <dependency>
             <groupId>com.demo.rest.api</groupId>
-            <artifactId>entity</artifactId>
+            <artifactId>service-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.rest.api</groupId>
+            <artifactId>exception</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

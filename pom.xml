@@ -16,6 +16,9 @@
         <module>dao</module>
         <module>config</module>
         <module>service</module>
+        <module>exception</module>
+        <module>dao-api</module>
+        <module>service-api</module>
         <module>rest-app</module>
     </modules>
 
