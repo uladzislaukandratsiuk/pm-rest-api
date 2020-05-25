@@ -1,6 +1,7 @@
 package com.demo.rest.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -39,17 +40,19 @@ public class Activity {
     @Column(name = "comment")
     private String comment;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "task_id")
+    @JsonIgnore
+    private Task task;
+
     public Activity() {
     }
 
-    public Activity(String activityName, String status, Date startDate,
-                    Date plannedEndDate, Date lastUpdateDate, String comment) {
+    public Activity(String activityName, String status, Date plannedEndDate) {
         this.activityName = activityName;
         this.status = status;
-        this.startDate = startDate;
         this.plannedEndDate = plannedEndDate;
-        this.lastUpdateDate = lastUpdateDate;
-        this.comment = comment;
     }
 
     public Long getId() {
@@ -106,6 +109,14 @@ public class Activity {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     @Override

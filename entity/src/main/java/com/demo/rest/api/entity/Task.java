@@ -38,7 +38,7 @@ public class Task {
     @Column(name = "comment")
     private String comment;
 
-    @OneToMany(mappedBy = "task",
+    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Activity> activities;
