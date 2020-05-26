@@ -2,7 +2,7 @@ package com.demo.rest.api.service;
 
 import com.demo.rest.api.dao.ActivityDao;
 import com.demo.rest.api.entity.Activity;
-import com.demo.rest.api.exception.ActivityNotFoundException;
+import com.demo.rest.api.exception.CustomEntityNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,21 +54,21 @@ class ActivityServiceImplTest {
     }
 
     @Test
-    public void activitiesIsEmpty_shouldThrowActivityNotFoundException() {
+    public void activitiesIsEmpty_shouldThrowCustomEntityNotFoundException() {
         when(activityDao.findAll())
                 .thenReturn(Collections.emptyList())
-                .thenThrow(ActivityNotFoundException.class);
+                .thenThrow(CustomEntityNotFoundException.class);
 
-        assertThrows(ActivityNotFoundException.class, () -> activityService.getActivities());
+        assertThrows(CustomEntityNotFoundException.class, () -> activityService.getActivities());
     }
 
     @Test
-    public void activitiesIsNull_shouldThrowActivityNotFoundException() {
+    public void activitiesIsNull_shouldThrowCustomEntityNotFoundException() {
         when(activityDao.findAll())
                 .thenReturn(null)
-                .thenThrow(ActivityNotFoundException.class);
+                .thenThrow(CustomEntityNotFoundException.class);
 
-        assertThrows(ActivityNotFoundException.class, () -> activityService.getActivities());
+        assertThrows(CustomEntityNotFoundException.class, () -> activityService.getActivities());
     }
 
     @Test
@@ -80,12 +80,12 @@ class ActivityServiceImplTest {
     }
 
     @Test
-    public void activityIsEmpty_shouldThrowActivityNotFoundException_forGetActivity() {
+    public void activityIsEmpty_shouldThrowCustomEntityNotFoundException_forGetActivity() {
         when(activityDao.findById(TEST_ACTIVITY_ID))
                 .thenReturn(Optional.empty())
-                .thenThrow(ActivityNotFoundException.class);
+                .thenThrow(CustomEntityNotFoundException.class);
 
-        assertThrows(ActivityNotFoundException.class,
+        assertThrows(CustomEntityNotFoundException.class,
                 () -> activityService.getActivity(TEST_ACTIVITY_ID));
     }
 
@@ -105,12 +105,12 @@ class ActivityServiceImplTest {
     }
 
     @Test
-    public void activityIsEmpty_shouldThrowActivityNotFoundException_forDeleteActivity() {
+    public void activityIsEmpty_shouldThrowCustomEntityNotFoundException_forDeleteActivity() {
         when(activityDao.findById(TEST_ACTIVITY_ID))
                 .thenReturn(Optional.empty())
-                .thenThrow(ActivityNotFoundException.class);
+                .thenThrow(CustomEntityNotFoundException.class);
 
-        assertThrows(ActivityNotFoundException.class,
+        assertThrows(CustomEntityNotFoundException.class,
                 () -> activityService.deleteActivity(TEST_ACTIVITY_ID));
     }
 }

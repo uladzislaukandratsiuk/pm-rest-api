@@ -1,15 +1,15 @@
 package com.demo.rest.api.exception.error_response;
 
-public class ActivityErrorResponse {
+public class CustomEntityErrorResponse {
 
     private int status;
     private String message;
     private long timestamp;
 
-    public ActivityErrorResponse() {
+    public CustomEntityErrorResponse() {
     }
 
-    public ActivityErrorResponse(int status, String message, long timestamp) {
+    public CustomEntityErrorResponse(int status, String message, long timestamp) {
         this.status = status;
         this.message = message;
         this.timestamp = timestamp;

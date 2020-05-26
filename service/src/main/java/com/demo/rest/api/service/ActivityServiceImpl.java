@@ -2,10 +2,11 @@ package com.demo.rest.api.service;
 
 import com.demo.rest.api.dao.ActivityDao;
 import com.demo.rest.api.entity.Activity;
-import com.demo.rest.api.exception.ActivityNotFoundException;
+import com.demo.rest.api.exception.CustomEntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,7 @@ public class ActivityServiceImpl implements ActivityService {
     public List<Activity> getActivities() {
         List<Activity> activities = activityDao.findAll();
         if (activities == null || activities.isEmpty())
-            throw new ActivityNotFoundException("No Activities data found!");
+            throw new CustomEntityNotFoundException("No Activities data found!");
         return activities;
     }
 
@@ -32,7 +33,7 @@ public class ActivityServiceImpl implements ActivityService {
     public Optional<Activity> getActivity(Long id) {
         Optional<Activity> activity = activityDao.findById(id);
         if (activity.isEmpty())
-            throw new ActivityNotFoundException("Activity with id=" + id + " not found!");
+            throw new CustomEntityNotFoundException("Activity with id=" + id + " not found!");
         return activity;
     }
 
@@ -47,7 +48,7 @@ public class ActivityServiceImpl implements ActivityService {
     public void deleteActivity(Long id) {
         Optional<Activity> activity = activityDao.findById(id);
         if (activity.isEmpty())
-            throw new ActivityNotFoundException("Activity with id=" + id + " not found!");
+            throw new CustomEntityNotFoundException("Activity with id=" + id + " not found!");
         activityDao.deleteById(id);
     }
 }
