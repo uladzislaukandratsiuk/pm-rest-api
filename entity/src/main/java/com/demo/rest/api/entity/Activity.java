@@ -23,18 +23,18 @@ public class Activity {
     private String status;
 
     @Column(name = "start_date")
-    @JsonFormat(shape= JsonFormat.Shape.STRING,
-            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date startDate;
 
     @Column(name = "planned_end_date")
-    @JsonFormat(shape= JsonFormat.Shape.STRING,
-            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date plannedEndDate;
 
     @Column(name = "last_update_date")
-    @JsonFormat(shape= JsonFormat.Shape.STRING,
-            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date lastUpdateDate;
 
     @Column(name = "comment")

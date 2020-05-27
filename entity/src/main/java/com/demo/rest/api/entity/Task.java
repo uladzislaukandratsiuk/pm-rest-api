@@ -1,6 +1,7 @@
 package com.demo.rest.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,13 +27,13 @@ public class Task {
     private String status;
 
     @Column(name = "start_date")
-    @JsonFormat(shape= JsonFormat.Shape.STRING,
-            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date startDate;
 
     @Column(name = "last_update_date")
-    @JsonFormat(shape= JsonFormat.Shape.STRING,
-            pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+3")
     private Date lastUpdateDate;
 
     @Column(name = "comment")
@@ -41,6 +42,7 @@ public class Task {
     @OneToMany(mappedBy = "task", fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REFRESH})
+    @JsonIgnore
     private List<Activity> activities;
 
     public Task() {
