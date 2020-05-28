@@ -4,10 +4,12 @@ import com.demo.rest.api.entity.Project;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class ProjectDaoImpl implements ProjectDao {
 
     private final SessionFactory sessionFactory;
