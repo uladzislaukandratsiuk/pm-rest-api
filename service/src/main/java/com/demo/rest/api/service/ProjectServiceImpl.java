@@ -2,6 +2,7 @@ package com.demo.rest.api.service;
 
 import com.demo.rest.api.dao.ProjectDao;
 import com.demo.rest.api.entity.Project;
+import com.demo.rest.api.exception.CustomEntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,13 +21,19 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional
     public List<Project> getProjects() {
-        return projectDao.findAll();
+        List<Project> projects = projectDao.findAll();
+        if (projects == null || projects.isEmpty())
+            throw new CustomEntityNotFoundException("No Projects data found!");
+        return projects;
     }
 
     @Override
     @Transactional
     public Optional<Project> getProject(Long id) {
-        return projectDao.findById(id);
+        Optional<Project> project = projectDao.findById(id);
+        if (project.isEmpty())
+            throw new CustomEntityNotFoundException("Project with id=" + id + " not found!");
+        return project;
     }
 
     @Override
@@ -38,6 +45,9 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional
     public void deleteProject(Long id) {
+        Optional<Project> project = projectDao.findById(id);
+        if (project.isEmpty())
+            throw new CustomEntityNotFoundException("Project with id=" + id + " not found!");
         projectDao.deleteById(id);
     }
 }
