@@ -45,6 +45,12 @@ public class Task {
     @JsonIgnore
     private List<Activity> activities;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "project_id")
+    @JsonIgnore
+    private Project project;
+
     public Task() {
     }
 
@@ -116,6 +122,14 @@ public class Task {
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     @Override
