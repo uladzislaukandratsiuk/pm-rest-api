@@ -7,6 +7,12 @@ Java resp-api project to study technologies such as REST, Spring Framework(MVC),
 Rest-api for "Project management tool" demo project. A simple project to do in one month and gain experience for larger projects.  
 I have idea to made my own "Project management tool" to learn new technologies and track time I spent on solving "tasks".
 
+### Project Documentation
+ 
+Steps to make this project.
+
+- [Creating SQL commands for generating MySQL Schema](documentation/sql_schema.md) 
+
 ### Used technologies
 
  - jdk: 11-amazon-corretto java version
@@ -45,7 +51,7 @@ Run terminal command in project directory:
 Simple example data conversion from MySQL table to POJO and then to JSON.
 
 ##### MySQL Table
-```roomsql
+```sql
     CREATE TABLE `activity` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `activity_name` varchar(128) DEFAULT NULL,

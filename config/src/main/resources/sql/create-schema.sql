@@ -21,7 +21,7 @@ CREATE TABLE `activity` (
 
   PRIMARY KEY (`id`),
 
-   UNIQUE KEY (`activity_name`),
+  UNIQUE KEY (`activity_name`),
 
   KEY `FK_TASK_ID_idx` (`task_id`),
 
