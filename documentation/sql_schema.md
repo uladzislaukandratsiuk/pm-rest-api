@@ -38,7 +38,7 @@ enable it when you’re done:
 SET FOREIGN_KEY_CHECKS = 1;
 ```
 
-##### Creating table.
+### Creating table.
 - ```DROP TABLE IF EXISTS  `table_name` ``` - if table exists, drops table in the database. 
 
 - ```CREATE TABLE `table_name` ``` - creates a new table.
@@ -51,14 +51,14 @@ CREATE TABLE `activity` (
 )
 ```
 
-##### Creating table column.
+### Creating table column.
 
 ```sql
  `column_name` data_type(length) [NOT NULL]  [DEFAULT value] [AUTO_INCREMENT] 
   column_constraint;
 ```
 
-##### Here are the details:
+### Here are the details:
 
 - The ```column_name``` specifies the name of the column. Each column has a specific data type and optional size e.g. ``` VARCHAR(255)  ```
 
@@ -149,7 +149,7 @@ A foreign key constraint is defined on the child table.
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 ```
 
-##### Insert values.
+### Insert values.
 
 ```sql
 INSERT INTO table_name (column1, column2, column3, ...)
@@ -163,7 +163,7 @@ VALUES (value1, value2, value3, ...);
 If you are adding values for all the columns of the table, you do not need to specify 
 the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table.
 
-##### Insert values example.
+### Insert values example.
 
 ```sql 
 INSERT INTO
@@ -172,3 +172,5 @@ VALUES
 ('setup project', 'High', 'Completed', '2020-05-10 17:42:00',
 '2020-05-11 17:45:00', 'setup project, setup config', 1);
 ```
+
+[Back to README](../README.md) 
