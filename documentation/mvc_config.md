@@ -10,19 +10,25 @@ all we have to do is add the ```@EnableWebMvc``` annotation:
 ```java
 @EnableWebMvc
 @Configuration
+@ComponentScan(basePackages = "com.demo.rest.api")
 public class WebConfig {
  
     /// ...
 }
 ```
- - ```@EnableWebMvc``` Enable Spring MVC-specific annotations like ```@Controller``` and ```@RestController```. 
+ - ```@EnableWebMvc``` - enable Spring MVC-specific annotations like ```@Controller``` and ```@RestController```. 
  
- - ```@Configuration``` indicates that the class can be used by the 
+ - ```@Configuration``` - indicates that the class can be used by the 
  ```Spring IoC container``` as a source of bean definitions.
  
- - The ```Spring IoC container``` is at the core of the Spring Framework. The container will create the objects, 
+ The ```Spring IoC container``` is at the core of the Spring Framework. The container will create the objects, 
  wire them together, configure them, and manage their complete life cycle from creation till destruction. 
  The Spring container uses ```dependency injection (DI)``` to manage the components that make up an application.
+ 
+ - ```@ComponentScan``` - using component scan is one method of asking Spring to detect Spring-managed components. 
+ Spring needs the information to locate and register all the Spring components with the application 
+ context when the application starts. Spring can auto scan, detect, and instantiate components 
+ from pre-defined project packages. 
 
 ### DispatcherServlet
 

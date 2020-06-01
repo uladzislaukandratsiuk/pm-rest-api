@@ -13,6 +13,7 @@ Steps to make this project.
 
 - [Creating SQL commands for generating MySQL Schema](documentation/sql_schema.md) 
 - [Set up Spring MVC using Java Configuration](documentation/mvc_config.md)
+- [Set up Data Source](documentation/data_source.md)
 
 ### Used technologies
 
