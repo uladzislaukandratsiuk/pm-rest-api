@@ -15,6 +15,7 @@ Steps to make this project.
 - [Set up Spring MVC using Java-based Configuration](documentation/mvc_config.md)
 - [Set up Data Source](documentation/data_source.md)
 - [Set up Hibernate using Java-based Configuration](documentation/hibernate_config.md)
+- [Defining Entity with JPA and Hibernate](documentation/jpa_entity.md)
 
 ### Used technologies
 
