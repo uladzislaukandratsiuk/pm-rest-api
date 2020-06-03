@@ -1,4 +1,4 @@
-# Set up Spring MVC using Java Configuration
+# Set up Spring MVC using Java-based Configuration
 
 ### Spring Web MVC
 
@@ -68,6 +68,15 @@ public class WebAppInitializer implements WebApplicationInitializer {
  - ```AnnotationConfigWebApplicationContext``` is used to create application context for web applications by using java 
  clases as input for bean definitions instead of xml files. By default Spring use ```XmlWebApplicationContext``` 
  (an implementation of ```WebApplicationContext```) for creating spring container in web applications.
+ 
+ - ```servlet.setLoadOnStartup(1);``` - load-on-startup indicates that this servlet should be loaded 
+ (instantiated and have its init() called) on the startup of the Web application. Container loads the servlets in 
+ ascending integer value. The 0 value will be loaded first then 1, 2, 3 and so on.
+ 
+ - ```servlet.addMapping("/");``` - Servlet mapping specifies the web container of which java servlet 
+ should be invoked for a url given by client. It maps url patterns to servlets. When there is a 
+ request from a client, servlet container decides to which application it should forward to. 
+ Then context path of url is matched for mapping servlets.
 
 ### Servlet Config
 
