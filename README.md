@@ -4,18 +4,19 @@
 Java resp-api project to study technologies such as REST, Spring Framework(MVC), Hibernate ORM, Junit5, Mockito, MockMvc, CI/CD and others.
 
 ### Project Idea 
-Rest-api for "Project management tool" demo project. A simple project to do in one month and gain experience for larger projects.  
+Rest-api for "Project management tool" demo project. A simple project to do in one month and gain experience for larger projects. 
 I have idea to made my own "Project management tool" to learn new technologies and track time I spent on solving "tasks".
 
 ### Project Documentation
  
-Steps to make this project.
+Steps to make this project:
 
 - [Creating SQL commands for generating MySQL Schema](documentation/sql_schema.md) 
 - [Set up Spring MVC using Java-based Configuration](documentation/mvc_config.md)
 - [Set up Data Source](documentation/data_source.md)
 - [Set up Hibernate using Java-based Configuration](documentation/hibernate_config.md)
 - [Defining Entity with JPA and Hibernate](documentation/jpa_entity.md)
+- [Creating DAO layer with Hibernate implementation](documentation/dao_layer.md)
 
 ### Used technologies
 
