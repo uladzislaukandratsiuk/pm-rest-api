@@ -17,6 +17,7 @@ Steps to make this project:
 - [Set up Hibernate using Java-based Configuration](documentation/hibernate_config.md)
 - [Defining Entity with JPA and Hibernate](documentation/jpa_entity.md)
 - [Creating DAO layer with Hibernate implementation](documentation/dao_layer.md)
+- [Creating Service layer](documentation/service_layer.md)
 
 ### Used technologies
 
