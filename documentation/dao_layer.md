@@ -197,9 +197,26 @@ translation of exceptions.
 While both the ```Task``` and ```TaskDaoImpl``` classes coexist independently within the same application, we still need to 
 see how the latter can be used for keeping the persistence layer hidden from application logic.
  
-Check [Service layer] to see how ```TaskDao``` interface can be used.
+Check [Service layer](service_layer.md) to see how ```TaskDao``` interface can be used.
 
 ### Hibernate implementation
+
+#### Dependency Injection
+
+Check [Spring IoC and DI](spring_ioc_di.md) for more about Inversion of Control and Dependency Injection. 
+
+```java
+@Repository
+public class TaskDaoImpl implements TaskDao {
+
+    private final SessionFactory sessionFactory;
+
+    public TaskDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+    //...
+}
+```
 
 #### Session Factory
 

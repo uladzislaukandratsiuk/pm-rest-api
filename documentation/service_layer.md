@@ -86,12 +86,30 @@ public class TaskServiceImpl implements TaskService {
 }
 ```
 
-### @Service - Spring annotation
+#### @Service - Spring annotation
 
 We mark beans with ```@Service``` to indicate that it's holding the business logic. 
 So there's no any other specialty except using it in the service layer.
 
-### @Transactional - Spring annotation
+#### Dependency Injection
+
+Check [Spring IoC and DI](spring_ioc_di.md) for more about Inversion of Control and Dependency Injection. 
+
+```java
+@Service
+public class TaskServiceImpl implements TaskService {
+
+   private final TaskDao taskDao;
+
+    public TaskServiceImpl(TaskDao taskDao) {
+        this.taskDao = taskDao;
+    }
+    
+    //...
+}
+```
+
+#### @Transactional - Spring annotation
 
 One of the key points about ```@Transactional``` is that there are two separate concepts to consider, 
 each with it's own scope and life cycle:
@@ -119,55 +137,11 @@ public void businessLogic() {
 }
 ```
 
-By using @Transactional, many important aspects such as transaction propagation
+By using ```@Transactional```, many important aspects such as transaction propagation
  are handled automatically. In this case if another transactional method is called 
- by businessLogic(), that method will have the option of joining the ongoing transaction.
+ by ```businessLogic()```, that method will have the option of joining the ongoing transaction.
 
 One potential downside is that this powerful mechanism hides what is going on under 
 the hood, making it hard to debug when things don't work.
-
-### Inversion of Control
-
-Inversion of Control is a principle in software engineering by which the control of objects or 
-portions of a program is transferred to a container or framework. It's most often used in the 
-context of object-oriented programming.
-
-By contrast with traditional programming, in which our custom code makes calls to a library, 
-IoC enables a framework to take control of the flow of a program and make calls to our custom 
-code. To enable this, frameworks use abstractions with additional behavior built in. If we want 
-to add our own behavior, we need to extend the classes of the framework or plugin our own classes.
-
-#### The advantages of this architecture are:
-
-   - decoupling the execution of a task from its implementation
-   - making it easier to switch between different implementations
-   - greater modularity of a program
-   - greater ease in testing a program by isolating a component or mocking its 
-   dependencies and allowing components to communicate through contracts
-
-
-### Dependency Injection
-
-Dependency injection is a pattern through which to implement IoC, where the control being 
-inverted is the setting of object's dependencies.
-
-The act of connecting objects with other objects, or “injecting” objects into other objects, 
-is done by an assembler rather than by the objects themselves.
-
-##### Constructor-based Dependency Injection
-
-```java
-@Service
-public class TaskServiceImpl implements TaskService {
-
-   private final TaskDao taskDao;
-
-    public TaskServiceImpl(TaskDao taskDao) {
-        this.taskDao = taskDao;
-    }
-    
-    //...
-}
-```
 
 [Back to README](../README.md) 
