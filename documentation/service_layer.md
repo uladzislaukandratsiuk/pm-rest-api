@@ -8,10 +8,10 @@ gateways, and others. Despite their different purposes, these interfaces often n
 with the application to access and manipulate its data and invoke its business logic. The Service Layer 
 fulfills this role.
 
-  ##### Service Layer by Randy Stafford
+  ##### Service Layer by Randy Stafford:
   
-  Defines an application's boundary with a layer of services that establishes a set of available 
-  operations and coordinates the application's response in each operation.
+  > Defines an application's boundary with a layer of services that establishes a set of available 
+  > operations and coordinates the application's response in each operation.
 
 ### Service Design Pattern
   
@@ -93,7 +93,7 @@ So there's no any other specialty except using it in the service layer.
 
 #### Dependency Injection
 
-Check [Spring IoC and DI](spring_ioc_di.md) for more about Inversion of Control and Dependency Injection. 
+###### Check [Spring IoC and DI](spring_ioc_di.md) for more about Inversion of Control and Dependency Injection. 
 
 ```java
 @Service

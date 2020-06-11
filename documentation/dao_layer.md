@@ -203,7 +203,7 @@ Check [Service layer](service_layer.md) to see how ```TaskDao``` interface can b
 
 #### Dependency Injection
 
-Check [Spring IoC and DI](spring_ioc_di.md) for more about Inversion of Control and Dependency Injection. 
+###### Check [Spring IoC and DI](spring_ioc_di.md) for more about Inversion of Control and Dependency Injection. 
 
 ```java
 @Repository
