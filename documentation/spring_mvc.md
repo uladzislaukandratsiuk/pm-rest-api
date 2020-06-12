@@ -19,7 +19,7 @@ three main logical components: the model, the view, and the controller. Each of 
  are built to handle specific development aspects of an application. MVC is one of the most 
  frequently used industry-standard web development framework to create scalable and extensible projects.
  
- ##### MVC Components
+ #### MVC Components
  
  ![MVC Components](image/mvc.png)
  
@@ -60,7 +60,7 @@ will be used to view the Customer data.
   - **Front Controller** - In Spring Web MVC, the DispatcherServlet class works as the front controller. 
   It is responsible to manage the flow of the Spring MVC application.
   
-##### Advantages of Spring MVC Framework:
+#### Advantages of Spring MVC Framework:
 
    - **Separate roles** - The Spring MVC separates each role, where the model object, controller, 
     command object, view resolver, DispatcherServlet, validator, etc. can be fulfilled by a specialized object.

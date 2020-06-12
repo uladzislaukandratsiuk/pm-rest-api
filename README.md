@@ -22,6 +22,7 @@ Steps to make this project:
 Additions:
 - [Spring IoC and DI](documentation/spring_ioc_di.md)
 - [Spring MVC](documentation/spring_mvc.md)
+- [Spring MVC Controllers](documentation/spring_controllers.md)
 
 ### Used technologies
 
