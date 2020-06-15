@@ -1,5 +1,7 @@
 # Spring MVC Controllers
 
+###### Check [Creating Spring MVC REST Controller layer](spring_controllers.md) for more about creating REST Controller layer. 
+
 ### Overview
 
  The concept of the ```Front Controller``` in the typical ```Spring Model View Controller``` architecture.
@@ -57,13 +59,13 @@ request handler. It’s mostly used with Spring MVC application.
 public class HelloWorldController {
 
     @GetMapping
-        public String showHelloForm(@RequestParam("studentName") String theName, Model model) {
+    public String showHelloForm(@RequestParam("studentName") String theName, Model model) {
     
-            String result = "Welcome, " + theName.toUpperCase() + "!";
-            model.addAttribute("message", result);
+        String result = "Welcome, " + theName.toUpperCase() + "!";
+        model.addAttribute("message", result);
     
-            return "hello-world";
-        }
+        return "hello-world";
+    }
     //...
 }
 ```
@@ -113,7 +115,7 @@ public class TaskRestController {
 The ```@RestController``` annotation from Spring Boot is basically a quick shortcut that saves us from 
 always having to define ```@ResponseBody```.
 
-```@ResponseBo```dy annotation on the method – instructs Spring to bypass 
+```@ResponseBody``` annotation on the method – instructs Spring to bypass 
 the view resolver and essentially write out the output directly to the body of the ```HTTP``` response.
 
 [Back to README](../README.md)

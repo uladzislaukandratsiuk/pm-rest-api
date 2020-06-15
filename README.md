@@ -18,6 +18,7 @@ Steps to make this project:
 - [Defining Entity with JPA and Hibernate](documentation/jpa_entity.md)
 - [Creating DAO layer with Hibernate implementation](documentation/dao_layer.md)
 - [Creating Service layer](documentation/service_layer.md)
+- [Creating Spring MVC REST Controller layer](documentation/controller_layer.md)
 
 Additions:
 - [Spring IoC and DI](documentation/spring_ioc_di.md)
