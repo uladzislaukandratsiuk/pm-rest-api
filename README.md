@@ -1,5 +1,5 @@
 # Rest-api 
-[![Build Status](https://travis-ci.org/vladkondratuk/rest-api.svg?branch=master)](https://travis-ci.org/github/vladkondratuk/rest-api)
+[![Build Status](https://travis-ci.org/vladkondratuk/pm-rest-api.svg?branch=master)](https://travis-ci.org/github/vladkondratuk/pm-rest-api)
 
 Java resp-api project to study technologies such as REST, Spring Framework(MVC), Hibernate ORM, Junit5, Mockito, MockMvc, CI/CD and others.
 
