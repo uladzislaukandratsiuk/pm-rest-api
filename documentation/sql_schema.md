@@ -1,4 +1,4 @@
-## Creating SQL commands for generating MySQL Schema
+# Creating SQL commands for generating MySQL Schema
 
 [Create schema SQL file](../config/src/main/resources/sql/create-schema.sql) 
 
@@ -149,6 +149,12 @@ A foreign key constraint is defined on the child table.
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 ```
 
+### Enhanced entity-relationship (EER) diagram
+
+Entities relationship in MySQL after creating SQL schema. 
+
+![EER diagram](image/err_diagram.png)
+
 ### Insert values.
 
 ```sql
@@ -172,5 +178,9 @@ VALUES
 ('setup project', 'High', 'Completed', '2020-05-10 17:42:00',
 '2020-05-11 17:45:00', 'setup project, setup config', 1);
 ```
+
+##### MySQL Task table with values.
+
+![Task table](image/task_table.png)
 
 [Back to README](../README.md) 

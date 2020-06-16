@@ -1,4 +1,4 @@
-# Rest-api 
+# "Project management" rest-api 
 [![Build Status](https://travis-ci.org/vladkondratuk/rest-api.svg?branch=master)](https://travis-ci.org/github/vladkondratuk/rest-api)
 
 Java resp-api project to study technologies such as REST, Spring Framework(MVC), Hibernate ORM, Junit5, Mockito, MockMvc, CI/CD and others.
@@ -46,18 +46,99 @@ Additions:
 ### Installing
 Choose a directory for project, download project from github:
  
-       $ git clone https://github.com/vladkondratuk/rest-api.git
+       $ git clone https://github.com/vladkondratuk/pm-rest-api.git
+       
+##### Terminal expected output       
+![git clone](documentation/image/git_clone.png)
 
 #### Build project
 Run terminal command in project directory:
 
+        $ cd pm-rest-api/
         $ mvn clean install
+        
+##### Terminal input 
+![mvn build](documentation/image/mvn_build.png)
+
+##### Terminal expected output
+![mvn build](documentation/image/success_build.png)
 
 #### Start app
 Run terminal command in project directory:
 
         $ cd /rest-app
-        $ mvn clean install cargo:run 
+        $ mvn clean install cargo:run
+
+##### Terminal input 
+![mvn build](documentation/image/start_app.png)
+
+##### Terminal expected output
+![mvn build](documentation/image/started_app.png)
+
+Press Ctrl+C to stop app. 
+
+### How to use REST API
+
+A REST API is an application program interface that uses HTTP requests to GET, PUT, POST and DELETE data.
+
+  #### HTTP Verbs
+  
+   The HTTP verbs comprise a major portion of our “uniform interface” constraint and provide us the
+    action counterpart to the noun-based resource. The primary or most-commonly-used HTTP verbs (or
+    methods, as they are properly called) are POST, GET, PUT, and DELETE. These correspond to create,
+    read, update, and delete (or CRUD) operations, respectively.
+    
+  #### GET
+  The HTTP GET method is used to retrieve (or read) a representation of a resource.
+  
+  Examples:
+  
+    GET http://localhost:8090/rest-api/projects
+    GET http://localhost:8090/rest-api/tasks/3
+    GET http://localhost:8090/rest-api/activities
+    GET http://localhost:8090/rest-api/activities/2
+  
+  #### PUT
+  PUT is most-often utilized for update capabilities, PUT-ing to a known resource URI with the request
+  request body containing the newly-updated representation of the original resource.
+  
+  Examples:
+  
+    PUT http://localhost:8090/rest-api/projects/1
+    PUT http://localhost:8090/rest-api/tasks/3
+    
+  #### POST
+  The POST verb is most-often utilized for creation of new resources. In particular, it's used to create
+  subordinate resources. That is, subordinate to some other (e.g. parent) resource. In other words, when
+  creating a new resource, POST to the parent and the service takes care of associating the new resource
+  with the parent, assigning an ID (new resource URI), etc.
+  
+  Examples:
+  
+    POST http://localhost:8090/rest-api/projects
+    POST http://localhost:8090/rest-api/tasks
+  
+  #### DELETE
+  DELETE is pretty easy to understand. It is used to delete a resource identified by a URI.
+  
+  Examples:
+  
+    DELETE http://localhost:8090/rest-api/projects/1
+    DELETE http://localhost:8090/rest-api/tasks/3
+  
+
+#### Use curl on new terminal window for HTTP request's 
+
+  Install jq, is a command-line tool for parsing JSON. 
+
+    $ curl GET -v http://localhost:8090/rest-api/projects | jq
+
+##### Terminal expected output 
+![GET projects](documentation/image/get_projects.png)
+  
+#### Use Postman for HTTP request's
+
+![Postman GET projects](documentation/image/postman_get.png)
 
 ### How it's work
 Simple example data conversion from MySQL table to POJO and then to JSON.
