@@ -24,6 +24,7 @@ Additions:
 - [Spring IoC and DI](documentation/spring_ioc_di.md)
 - [Spring MVC](documentation/spring_mvc.md)
 - [Spring MVC Controllers](documentation/spring_controllers.md)
+- [RESTful api](documentation/rest.md)
 
 ### Used technologies
 
@@ -81,8 +82,9 @@ Press Ctrl+C to stop app.
 
 A REST API is an application program interface that uses HTTP requests to GET, PUT, POST and DELETE data.
 
+###### Check [RESTful api](documentation/rest.md) for more about RESTful api.
+
   #### HTTP Verbs
-  
    The HTTP verbs comprise a major portion of our “uniform interface” constraint and provide us the
     action counterpart to the noun-based resource. The primary or most-commonly-used HTTP verbs (or
     methods, as they are properly called) are POST, GET, PUT, and DELETE. These correspond to create,
@@ -100,7 +102,7 @@ A REST API is an application program interface that uses HTTP requests to GET, P
   
   #### PUT
   PUT is most-often utilized for update capabilities, PUT-ing to a known resource URI with the request
-  request body containing the newly-updated representation of the original resource.
+  body containing the newly-updated representation of the original resource.
   
   Examples:
   
